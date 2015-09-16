@@ -1,0 +1,51 @@
+#include <iostream>
+#include <cstring>
+
+using namespace std;
+
+
+int Find_2(int f, int c)
+{
+	if(f >= c)
+		return f - c;
+	int count = 0;
+	int b_4 = 0;
+	int b_2 = 0;
+
+	if(c == 1)
+		return c - f;
+	while(1)
+	{
+		if(c % 2)
+			count++;
+		c /= 2;
+		b_4 = c;
+		b_2 = c * 2;
+		count++;
+		if(c <= f)
+			break;
+	}
+
+	if((f - b_4) > (b_2 - f))
+	{
+		count--;
+		count += b_2 - f;
+	}
+	else
+	{
+		count += f - b_4;
+	}
+
+	return count;
+
+
+}
+int main()
+{
+	int FJ, cow;
+	while(cin>>FJ>>cow)
+	{
+		cout<<Find_2(FJ, cow)<<endl;
+	}
+	return 0;
+}
